@@ -29,6 +29,11 @@ pipeline {
             sh 'ls -al'
           }
         }
+        stage('myCheck') {
+          steps {
+            sh 'echo "hello"'
+          }
+        }
       }
     }
     stage('Result') {
