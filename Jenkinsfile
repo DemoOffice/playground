@@ -13,17 +13,27 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        parallel(
-          "Build": {
+      parallel {
+        stage('Build') {
+          steps {
             sh 'mvn -Dmaven.test.failure.ignore clean package'
-            
-          },
-          "codeQA": {
-            echo 'code has been scanned'
-            
           }
-        )
+        }
+        stage('codeQA') {
+          steps {
+            echo 'code has been scanned'
+          }
+        }
+        stage('License Check') {
+          steps {
+            sh 'ls -al'
+          }
+        }
+        stage('myCheck') {
+          steps {
+            sh 'echo "hello"'
+          }
+        }
       }
     }
     stage('Result') {
