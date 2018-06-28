@@ -34,6 +34,11 @@ pipeline {
             sh 'echo "hello"'
           }
         }
+        stage('Copyright Check') {
+          steps {
+            sh 'echo "copyright check"'
+          }
+        }
       }
     }
     stage('Result') {
